@@ -1,7 +1,7 @@
 from sense_hat import SenseHat
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import SocketServer
-# from http.server import BaseHTTPRequestHandler, HTTPServer
+# from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+# import SocketServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class S(BaseHTTPRequestHandler):

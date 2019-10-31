@@ -1,7 +1,7 @@
 from sense_hat import SenseHat
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
-import SocketServer
-# from http.server import BaseHTTPRequestHandler, HTTPServer
+#from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+# import SocketServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class S(BaseHTTPRequestHandler):
@@ -16,7 +16,11 @@ class S(BaseHTTPRequestHandler):
         temperature = sense.get_temperature()
         humidity = sense.get_humidity()
         # print("Temperature: ", temperature, " Humidity: ", humidity)
-        self.wfile.write(bytes("<html><body><p>Temperature: <b>"+str(temperature)+"</b><br>Humidity: <b>"+str(humidity)+"</b></p></html>", "utf-8"))
+        self.wfile.write(bytes("<html><body><p>Temperature: <b>", "utf-8"))
+        self.wfile.write(bytes(str(temperature), "utf-8"))
+        self.wfile.write(bytes("</b><br>Humidity: <b>", "utf-8"))
+        self.wfile.write(bytes(str(humidity), "utf-8"))
+        self.wfile.write(bytes("</b></p></html>", "utf-8"))
 
 
 def run(server_class=HTTPServer, handler_class=S, port=8001):

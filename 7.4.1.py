@@ -18,7 +18,7 @@ class S(BaseHTTPRequestHandler):
         humidity = round(sense.get_humidity(), 4)
         pressure = round(sense.get_pressure(), 2)
         # print("Temperature: ", temperature, " Humidity: ", humidity)
-        self.wfile.write(bytes("{“temperature”:"+str(temperature)+", “humidity”:"+str(humidity)+", “pressure”:"+str(pressure)+")}", "utf-8"))
+        self.wfile.write(bytes("{temperature:"+str(temperature)+", humidity:"+str(humidity)+", pressure:"+str(pressure)+")}", "utf-8"))
 
 
 def run(server_class=HTTPServer, handler_class=S, port=8001):

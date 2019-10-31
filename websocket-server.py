@@ -66,12 +66,12 @@ while True:
     # broadcast accelerometer to all connected clients
     for client in server.connections.itervalues():
         if client.handshaked:
-            print('sending ', message, ' to ', client.address[0])
+            # print('sending ', message, ' to ', client.address[0])
             client.sendMessage(u'{' + str(message) + u'}')
             count += 1
             timer = time.time()
             if timer-old_timer >= 1:
-                print(count/(timer-old_timer))
+                print(round(count/(timer-old_timer),0))
                 count = 0
                 old_timer = time.time()
 
